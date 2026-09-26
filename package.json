@@ -1,0 +1,20 @@
+{
+  "name": "release-notes-diff",
+  "version": "0.1.0",
+  "description": "Compare release notes with commits, issues and user-visible change categories.",
+  "type": "module",
+  "bin": { "release-notes-diff": "./bin/release-notes-diff.mjs" },
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "lint": "node --check src/index.mjs && node --check bin/release-notes-diff.mjs",
+    "test": "node --test",
+    "check": "npm run lint && npm test"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/edilec/release-notes-diff"
+  }
+}
