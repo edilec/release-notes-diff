@@ -10,7 +10,7 @@ const change = (id = 'c1', changeId = 'CH-1', category = 'feature', userFacing =
 const issue = (changeId = 'CH-1', category = 'feature') => ({ changeId, category });
 const note = (changeId = 'CH-1', category = 'feature') => ({ changeId, category });
 const doc = (commits = [change()], issues = [issue()], notes = [note()]) => ({ schemaVersion: '1', complete: true, commits: { complete: true, items: commits }, issues: { complete: true, items: issues }, notes: { complete: true, items: notes } });
-const run = (root, input) => spawnSync(process.execPath, ['bin/release-notes-diff.mjs', '--root', root, '--input', input], { cwd: new URL('..', import.meta.url), encoding: 'utf8', env: { ...process.env, NODE_OPTIONS: '--import=/Users/km/Desktop/web/open-source/migration-plan-template/support/deny-network.mjs' } });
+const run = (root, input) => spawnSync(process.execPath, ['bin/release-notes-diff.mjs', '--root', root, '--input', input], { cwd: new URL('..', import.meta.url), encoding: 'utf8', env: { ...process.env, NODE_OPTIONS: `--import=${new URL('../../migration-plan-template/support/deny-network.mjs', import.meta.url).href}` } });
 
 test('explicit supported user-facing change and note pass', () => {
   const r = compareReleaseNotes(doc()); assert.equal(r.status, 'pass'); assert.equal(r.summary.checked, 1); assert.deepEqual(r.findings, []);
